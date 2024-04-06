@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 import './Register.css'; // Import CSS file
 import { Database } from 'firebase/database';
+import { getDatabase, ref, push } from "firebase/database";
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import { database } from './FireBaseConfig';
 const Register = () => {
@@ -9,13 +11,30 @@ const Register = () => {
   const [role, setRole] = useState('');
   const [educationLevel, setEducationLevel] = useState('');
   const [subject, setSubject] = useState('');
+console.log(database);
+const handleRegister = () => {
+  console.log('Registration details:', { email, password, role, educationLevel, subject });
 
-  const handleRegister = () => {
-    // Handle registration logic here
-    console.log('Registration details:', { email, password, role, educationLevel, subject });
-createUserWithEmailAndPassword(database,email,password,role,educationLevel,subject).then(data=>console.log(data,"authdData"))
-
+  const userData = {
+    email,
+    role,
+    educationLevel,
+    subject
   };
+
+  // Get a reference to the 'users' node in the database
+  const dbRef = ref(database, 'users');
+
+  // Push the user data to the 'users' node
+  push(dbRef, userData)
+    .then(() => {
+      console.log('User registered successfully');
+      // You can redirect the user or perform other actions here
+    })
+    .catch((error) => {
+      console.error('Error saving user data:', error);
+    });
+};
   
 
   return (
