@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Register.css'; // Import CSS file
-
+import { Database } from 'firebase/database';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import { database } from './FireBaseConfig';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +13,10 @@ const Register = () => {
   const handleRegister = () => {
     // Handle registration logic here
     console.log('Registration details:', { email, password, role, educationLevel, subject });
+createUserWithEmailAndPassword(database,email,password,role,educationLevel,subject).then(data=>console.log(data,"authdData"))
+
   };
+  
 
   return (
     <div className="register-container">

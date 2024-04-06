@@ -1,0 +1,47 @@
+/* components/StudentDashboard.css */
+
+.student-dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .student-dashboard-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .tutor-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tutor-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .tutor-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .tutor-info {
+    font-weight: bold;
+  }
+  
+  .send-message-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .send-message-btn:hover {
+    background-color: #0056b3;
+  }
+  

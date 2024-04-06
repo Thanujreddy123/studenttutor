@@ -5,6 +5,8 @@ import About from './components/About';
 import Register from './components/Register';
 import TutorSession from './components/Tutorsession';
 import VideoCall from './components/Videocall';
+import TutorDashboard from './components/TutorDashboard';
+import StudentDashboard from './components/StudentDashboard';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/tutorsession' element={<TutorSession />} />
           <Route path='/videocall' element={<VideoCall />} />
+          <Route path='/TutorDashboard' element={<TutorDashboard />} />
+          <Route path='/StudentDashboard' element={<StudentDashboard />} />
         </Routes>
       </Router>
     </div>
