@@ -1,6 +1,14 @@
 .App {
   text-align: center;
 }
+body {
+  text-align: center;
+  background-image: url('C:\Users\Thanu\OneDrive\Desktop\Projects\StudentIntegration\studenttutor\src\components\download.jpg'); /* Update the path relative to the CSS file */
+  background-repeat: no-repeat; /* Optional: Prevent repeating the background image */
+  background-size: cover; /* Optional: Scale the background image to cover the entire page */
+  margin: 0;
+  padding: 0;
+}
 
 .App-logo {
   height: 40vmin;

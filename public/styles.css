@@ -1,0 +1,38 @@
+/* CSS for HTML structure */
+
+/* Set default styles for body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('C:\Users\Thanu\OneDrive\Desktop\Projects\StudentIntegration\studenttutor\public\mainbackground.jpg');
+  }
+  
+  /* Style for noscript tag */
+  noscript {
+    text-align: center;
+    padding: 20px;
+    
+  }
+  
+  /* Set styles for the root element */
+  #root {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px; /* Limit the width of content */
+   /* Sample background image */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Set styles for the title */
+  title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for favicon */
+  link[rel="icon"] {
+    display: none; /* Hide favicon */
+  }
+  

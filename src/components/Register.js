@@ -1,41 +1,36 @@
 import React, { useState } from 'react';
-
-import './Register.css'; // Import CSS file
-import { Database } from 'firebase/database';
+import { Link } from 'react-router-dom';
+import './Register.css';
 import { getDatabase, ref, push } from "firebase/database";
-import {createUserWithEmailAndPassword} from 'firebase/auth';
 import { database } from './FireBaseConfig';
+
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [educationLevel, setEducationLevel] = useState('');
   const [subject, setSubject] = useState('');
-console.log(database);
-const handleRegister = () => {
-  console.log('Registration details:', { email, password, role, educationLevel, subject });
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
-  const userData = {
-    email,
-    role,
-    educationLevel,
-    subject
+  const handleRegister = () => {
+    const userData = {
+      email,
+      role,
+      educationLevel: role === 'student' ? educationLevel : null,
+      subject: role === 'tutor' ? subject : null
+    };
+
+    const dbRef = ref(database, 'users');
+
+    push(dbRef, userData)
+      .then(() => {
+        // Set registration success to true
+        setRegistrationSuccess(true);
+      })
+      .catch((error) => {
+        console.error('Error registering user:', error);
+      });
   };
-
-  // Get a reference to the 'users' node in the database
-  const dbRef = ref(database, 'users');
-
-  // Push the user data to the 'users' node
-  push(dbRef, userData)
-    .then(() => {
-      console.log('User registered successfully');
-      // You can redirect the user or perform other actions here
-    })
-    .catch((error) => {
-      console.error('Error saving user data:', error);
-    });
-};
-  
 
   return (
     <div className="register-container">
@@ -64,7 +59,12 @@ const handleRegister = () => {
       </div>
       <div>
         <label htmlFor="role">Role:</label>
-        <select id="role" name="role" value={role} onChange={(e) => setRole(e.target.value)}>
+        <select 
+          id="role" 
+          name="role" 
+          value={role} 
+          onChange={(e) => setRole(e.target.value)}
+        >
           <option value="">Select a role</option>
           <option value="student">Student</option>
           <option value="tutor">Tutor</option>
@@ -96,7 +96,15 @@ const handleRegister = () => {
           />
         </div>
       )}
-      <button onClick={handleRegister}>Register</button>
+      {registrationSuccess ? (
+        <div>
+          <p>Registration successful! Proceed to <Link to="/">Login</Link>.</p>
+        </div>
+      ) : (
+        <div>
+          <button onClick={handleRegister}>Register</button>
+        </div>
+      )}
     </div>
   );
 };

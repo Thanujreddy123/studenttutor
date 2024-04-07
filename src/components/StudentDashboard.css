@@ -1,47 +1,57 @@
-/* components/StudentDashboard.css */
-
 .student-dashboard-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .student-dashboard-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .tutor-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .tutor-item {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .tutor-item:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .tutor-info {
-    font-weight: bold;
-  }
-  
-  .send-message-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .send-message-btn:hover {
-    background-color: #0056b3;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color:azure;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-image: url('C:\Users\Thanu\OneDrive\Desktop\Projects\StudentIntegration\studenttutor\src\homelogo.jpg');
+}
+
+.student-dashboard-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.student-info {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.tutor-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tutor-item {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.tutor-info {
+  margin-bottom: 10px;
+}
+
+.send-message-btn,
+.start-video-call-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.send-message-btn:hover,
+.start-video-call-btn:hover {
+  background-color: #0056b3;
+}

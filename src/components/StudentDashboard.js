@@ -1,37 +1,52 @@
-// components/StudentDashboard.js
-import React, { useState } from 'react';
-import './StudentDashboard.css'; // Import CSS file
+import React, { useState, useEffect } from 'react';
+import './StudentDashboard.css';
+import { getDatabase, ref, get } from "firebase/database";
 
-const StudentDashboard = () => {
-  const [tutors] = useState([
-    { id: 1, name: 'John Doe', email: 'john@example.com', subject: 'Mathematics' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', subject: 'Physics' },
-    { id: 3, name: 'Alice Johnson', email: 'alice@example.com', subject: 'English' },
-    // Add more tutor objects as needed
-  ]);
+const StudentDashboard = ({ studentEmail }) => {
+  const [tutors, setTutors] = useState([]);
+
+  useEffect(() => {
+    const fetchTutors = async () => {
+      try {
+        const dbRef = ref(getDatabase(), 'users');
+        const snapshot = await get(dbRef);
+        if (snapshot.exists()) {
+          const tutorsData = Object.values(snapshot.val()).filter(user => user.role === 'tutor');
+          setTutors(tutorsData);
+        }
+      } catch (error) {
+        console.error('Error fetching tutors:', error);
+      }
+    };
+
+    fetchTutors();
+  }, []);
 
   const sendMessageToTutor = (tutorEmail) => {
-    // Open default email client with tutor's email address
     window.location.href = `mailto:${tutorEmail}`;
   };
 
   const startVideoCallWithTutor = (tutorId) => {
-    // Redirect to video calling service URL with tutor's ID
-    // Example URL: https://video-call-service.com/start-call?tutorId=123
     window.location.href = `https://video-call-service.com/start-call?tutorId=${tutorId}`;
   };
 
+  const joinMeeting = (tutorEmail) => {
+    window.location.href = `http://localhost:3000/room/${tutorEmail}`;
+  };
+  
   return (
     <div className="student-dashboard-container">
       <h2 className="student-dashboard-title">Student Dashboard</h2>
+      <p>Student Email: {studentEmail}</p>
       <ul className="tutor-list">
+        <h4>Tutors list </h4>
         {tutors.map((tutor) => (
           <li key={tutor.id} className="tutor-item">
             <div className="tutor-info">Name: {tutor.name}</div>
             <div className="tutor-info">Email: {tutor.email}</div>
             <div className="tutor-info">Subject: {tutor.subject}</div>
             <button className="send-message-btn" onClick={() => sendMessageToTutor(tutor.email)}>Send Message</button>
-            <button className="start-video-call-btn" onClick={() => startVideoCallWithTutor(tutor.id)}>Start Video Call</button>
+            <button className="join-meeting-btn" onClick={() => joinMeeting(tutor.email)}>Join Meeting</button>
           </li>
         ))}
       </ul>

@@ -1,45 +1,46 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'; // Import Firebase Authentication methods
-import './Home.css'; // Import CSS file
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import './Home.css';
+import StudentDashboard from './StudentDashboard'; // Import StudentDashboard component
 
 const Home = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState(''); // State variable for role selection
+  const [role, setRole] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false); // State variable to track login success
+  const [success, setSuccess] = useState(false);
+  const [userEducation, setUserEducation] = useState('');
+  const [studentDashboardProps, setStudentDashboardProps] = useState(null);
 
-  // Function to handle login
   const handleLogin = () => {
-    const auth = getAuth(); // Get Firebase Authentication instance
-
-    // Sign in with email and password
+    const auth = getAuth();
+    
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Clear form fields, error message, and set success to true on successful login
+      .then(() => {
+        // Simulate user's education data (replace with your actual logic)
+        const userEducation = "Bachelor's in Computer Science";
+
+        // Set email, clear form fields, set success to true, and render StudentDashboard with props
         setEmail('');
         setPassword('');
         setError('');
         setSuccess(true);
-        console.log('User logged in:', userCredential.user);
-
-        // Redirect to appropriate dashboard based on role using window.location
-        if (role === 'student') {
-          window.location.href = '/StudentDashboard';
-        } else if (role === 'tutor') {
-          window.location.href = '/TutorDashboard';
-        }
+        setStudentDashboardProps({ email, userEducation });
       })
       .catch((error) => {
-        // Handle errors during login
         setError(error.message);
-        setSuccess(false); // Reset success to false on login failure
+        setSuccess(false);
       });
   };
 
+  // Render StudentDashboard if props are available
+  if (studentDashboardProps) {
+    return <StudentDashboard {...studentDashboardProps} />;
+  }
+
   return (
-    <div className="home-container">
+    <div className="home-container black-background">
       <h2>Login</h2>
       <div className="input-group">
         <label htmlFor="email">Email:</label>

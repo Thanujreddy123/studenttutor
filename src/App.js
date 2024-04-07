@@ -7,6 +7,7 @@ import TutorSession from './components/Tutorsession';
 import VideoCall from './components/Videocall';
 import TutorDashboard from './components/TutorDashboard';
 import StudentDashboard from './components/StudentDashboard';
+import Room from './components/Room';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/register' element={<Register />} />
           <Route path='/tutorsession' element={<TutorSession />} />
+          <Route path="/room/:roomid" element={<Room />} />
           <Route path='/videocall' element={<VideoCall />} />
           <Route path='/TutorDashboard' element={<TutorDashboard />} />
           <Route path='/StudentDashboard' element={<StudentDashboard />} />

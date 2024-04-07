@@ -1,76 +1,106 @@
+/* Additional CSS styles for Home component */
+
+/* Container styles */
 .home-container {
-    max-width: 400px;
-    margin: 50px auto; /* Increased top margin for better centering */
-    padding: 40px;
-    background-color: #ffffff; /* Changed background color to white */
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adjusted box shadow */
-  }
-  
-  .home-container h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-  }
-  
-  .home-container h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 12px; /* Increased padding for better input appearance */
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .button-container {
-    text-align: center;
-  }
-  
-  .button-container button {
-    padding: 12px 30px; /* Increased padding for better button appearance */
-    font-size: 18px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Added smooth transition */
-  }
-  
-  .button-container button:hover {
-    background-color: #0056b3;
-  }
-  
-  .registration-link {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #007bff;
-  }
-  
-  .registration-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .registration-link a:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 400px;
+  margin: 50px auto; /* Increased top margin for better centering */
+  padding: 40px;
+  background-color: #e3f2fd; /* Changed background color to light blue */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adjusted box shadow */
+  background-image: url('C:\Users\Thanu\OneDrive\Desktop\Projects\StudentIntegration\studenttutor\src\homelogo.jpg'); /* Replace the URL with the URL of your online image */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+}
+
+/* Header styles */
+.home-container h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color:white;
+  text-align: center;
+  text-align: left;
+}
+
+.home-container label {
+  font-size: 1.2em; /* Adjust the font size as needed */
+}
+
+/* Form input styles */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color:white;
+  text-align: left;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px; /* Increased padding for better input appearance */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s; /* Added transition for better interaction */
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #007bff; /* Highlight border color on focus */
+}
+
+/* Button styles */
+.button-container {
+  text-align: center;
+}
+
+.button-container button {
+  padding: 12px 30px; /* Increased padding for better button appearance */
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Added smooth transition */
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Error and success message styles */
+.error-message,
+.success-message {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #dc3545; /* Error message color */
+}
+
+.success-message {
+  color: #28a745; /* Success message color */
+}
+
+/* Registration link styles */
+.registration-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.registration-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.registration-link a:hover {
+  text-decoration: underline;
+}
